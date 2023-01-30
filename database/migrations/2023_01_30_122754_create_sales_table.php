@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('description')->nullable();
+            $table->foreignId('client_id')->constrained('clients');
+            $table->foreignId('user_id')->constrained('users');
+            $table->dateTime('sale_date');
+            $table->decimal('tax');
+            $table->decimal('total');
+            $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('sales');
     }
 };
