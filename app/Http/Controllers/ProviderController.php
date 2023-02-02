@@ -77,6 +77,13 @@ class ProviderController extends Controller
      */
     public function update(UpdateProviderRequest $request, Provider $provider)
     {
+//        $provUpd = Provider::find($provider->id);
+//        $provUpd->name = $request->name;
+//        $provUpd->email = $request->email;
+//        $provUpd->ruc_number = $request->ruc_number;
+//        $provUpd->address = $request->address;
+//        $provUpd->phone = $request->phone;
+//        $provUpd->save();
         $provider->update($request->all());
         return redirect()->route('providers.index');
     }

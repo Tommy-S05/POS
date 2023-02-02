@@ -36,7 +36,16 @@
                         </div>
                         <form action="{{ route('categories.store') }}" method="POST">
                             {{ csrf_field() }}
-                            @include('admin.category._form')
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Descripción</label>
+                                <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                            </div>
+
                             <button type="submit" class="btn btn-primary mr-2">Registrar</button>
                             <a class="btn btn-light" href="{{ route('categories.index') }}">Cancelar</a>
                         </form>

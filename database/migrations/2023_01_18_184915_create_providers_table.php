@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('email');
-            $table->string('ruc_number');
+            $table->string('email')->unique();
+            $table->string('ruc_number', 15)->unique();
             $table->string('address')->nullable();
-            $table->string('phone');
+            $table->string('phone', 15)->unique();
             $table->timestamps();
         });
     }

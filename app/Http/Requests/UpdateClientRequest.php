@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateClientRequest extends FormRequest
 {
@@ -24,21 +25,13 @@ class UpdateClientRequest extends FormRequest
     public function rules()
     {
         return [
+//            .Rule::unique('providers')->ignore($this->provider->id)
             'name' => 'required|string|max:255',
-
-            'cedula' => 'required|string|unique:clients, cedula,'.
-                $this->route('client')->id.'|max:11|min:11',
-
-            'ruc' => 'nullable|string|unique:clients, ruc,'.
-                $this->route('client')->id.'|max:11|min:11',
-
+            'cedula' => 'required|string|max:11|min:11|'.Rule::unique('clients')->ignore($this->client->id),
+            'ruc' => 'nullable|string|max:11|min:11'.Rule::unique('clients')->ignore($this->client->id),
             'address' => 'nullable|string|max:255',
-
-            'phone' => 'required|string|unique:clients, phone,'.
-                $this->route('client')->id.'|max:10|min:10',
-
-            'email' => 'nullable|string|email|unique:clients, email,'.
-                $this->route('client')->id.'|max:255'
+            'phone' => 'required|string|max:10|min:10'.Rule::unique('clients')->ignore($this->client->id),
+            'email' => 'nullable|string|email|max:255'.Rule::unique('clients')->ignore($this->client->id)
         ];
     }
 

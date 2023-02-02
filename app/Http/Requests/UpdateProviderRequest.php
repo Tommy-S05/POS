@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProviderRequest extends FormRequest
 {
@@ -24,18 +25,11 @@ class UpdateProviderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-
-            'email' => 'required|email|string|unique:providers, email,'.
-                $this->route('provider')->id.'|max:255',
-
-            'ruc_number' => 'required|string|unique:providers, ruc_number,'.
-                $this->route('provider')->id.'|max:11|min:11',
-
+            'name' => 'required|string|max:255|'.Rule::unique('providers')->ignore($this->provider->id),
+            'email' => 'required|email|string|max:255|'.Rule::unique('providers')->ignore($this->provider->id),
+            'ruc_number' => 'required|string|max:11|min:11|'.Rule::unique('providers')->ignore($this->provider->id),
             'address' => 'nullable|string|max:255',
-
-            'phone' => 'required|string|unique:providers, phone'.
-                $this->route('provider')->id.'|max:10|min:10'
+            'phone' => 'required|string|max:10|min:10|'.Rule::unique('providers')->ignore($this->provider->id)
         ];
     }
     public function messages()
