@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Registrar Proveedores')
+@section('title', 'Registrar Cliente')
 
 @section('styles')
 @endsection
@@ -17,13 +17,13 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Registro de Proveedores
+                Registro de Clientes
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Panel de Administrador</a></li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('providers.index') }}">Proveedores</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Registro de Proveedores</li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('clients.index') }}">Clientes</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Registro de Clientes</li>
                 </ol>
             </nav>
         </div>
@@ -32,9 +32,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Registro de Proveedores</h4>
+                            <h4 class="card-title">Registro de Clientes</h4>
                         </div>
-                        <form action="{{ route('providers.store') }}" method="POST">
+                        <form action="{{ route('clients.store') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="name" class="form-label">Nombre</label>
@@ -42,27 +42,35 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="email">Corre Electrónico</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@gmail.com" required>
+                                <label for="cedula">Cédula</label>
+                                <input type="number" name="cedula" id="cedula" class="form-control" placeholder="Cédula" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="ruc_number">RUC Number</label>
-                                <input type="number" name="ruc_number" id="ruc_number" class="form-control" placeholder="RUC Number" required>
+                                <label for="email">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="ejemplo@gmail.com">
+                                <small class="form-text text-muted">Este campo es opcional</small>
                             </div>
 
                             <div class="form-group">
-                                <label for="address">Dirrección</label>
+                                <label for="ruc">RUC</label>
+                                <input type="number" name="ruc" id="ruc" class="form-control" placeholder="RUC">
+                                <small class="form-text text-muted">Este campo es opcional</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Dirección</label>
                                 <input type="text" name="address" id="address" class="form-control" placeholder="Dirección">
+                                <small class="form-text text-muted">Este campo es opcional</small>
                             </div>
 
                             <div class="form-group">
                                 <label for="phone">Número de Contacto</label>
-                                <input type="number" name="phone" id="phone" class="form-control" placeholder="Número de Contacto" required>
+                                <input type="number" name="phone" id="phone" class="form-control" placeholder="Número de Contacto">
+                                <small class="form-text text-muted">Este campo es opcional</small>
                             </div>
-
                             <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                            <a class="btn btn-light" href="{{ route('providers.index') }}">Cancelar</a>
+                            <a class="btn btn-light" href="{{ route('clients.index') }}">Cancelar</a>
                         </form>
                     </div>
                 </div>
@@ -73,4 +81,5 @@
 
 @section('scripts')
     {!! Html::script('Melody/js/data-table.js') !!}
+    {!! Html::script('Melody/js/dropify.js') !!}
 @endsection

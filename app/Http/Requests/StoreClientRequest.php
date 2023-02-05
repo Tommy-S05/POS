@@ -28,7 +28,7 @@ class StoreClientRequest extends FormRequest
             'cedula' => 'required|string|unique:clients|max:11|min:11',
             'ruc' => 'nullable|string|unique:clients|max:11|min:11',
             'address' => 'nullable|string|max:255',
-            'phone' => 'required|string|unique:clients|max:10|min:10',
+            'phone' => 'nullable|string|unique:clients|max:10|min:10',
             'email' => 'nullable|string|email|unique:clients|max:255'
         ];
     }

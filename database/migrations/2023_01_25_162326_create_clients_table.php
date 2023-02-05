@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('cedula', 15)->unique();
             $table->string('ruc', 15)->nullable()->unique();
             $table->string('address')->nullable();
-            $table->string('phone', 15)->unique();
+            $table->string('phone', 15)->nullable()->unique();
             $table->string('email')->nullable()->unique();
             $table->timestamps();
         });

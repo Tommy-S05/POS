@@ -28,10 +28,10 @@ class UpdateClientRequest extends FormRequest
 //            .Rule::unique('providers')->ignore($this->provider->id)
             'name' => 'required|string|max:255',
             'cedula' => 'required|string|max:11|min:11|'.Rule::unique('clients')->ignore($this->client->id),
-            'ruc' => 'nullable|string|max:11|min:11'.Rule::unique('clients')->ignore($this->client->id),
+            'ruc' => 'nullable|string|max:11|min:11|'.Rule::unique('clients')->ignore($this->client->id),
             'address' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:10|min:10'.Rule::unique('clients')->ignore($this->client->id),
-            'email' => 'nullable|string|email|max:255'.Rule::unique('clients')->ignore($this->client->id)
+            'phone' => 'nullable|string|max:10|min:10|'.Rule::unique('clients')->ignore($this->client->id),
+            'email' => 'nullable|string|email|max:255|'.Rule::unique('clients')->ignore($this->client->id)
         ];
     }
 
