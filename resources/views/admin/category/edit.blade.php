@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Editar Categorías')
+@section('title', 'Edición de Categorías')
 
 @section('styles')
 @endsection
@@ -17,13 +17,13 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Editar Categoría
+                Edición de Categoría
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Panel de Administrador</a></li>
                     <li class="breadcrumb-item" aria-current="page"><a href="{{ route('categories.index') }}">Categorías</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Editar Categoría</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edición de Categoría</li>
                 </ol>
             </nav>
         </div>
@@ -32,7 +32,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Editar Categoría</h4>
+                            <h4 class="card-title">Edición de Categoría</h4>
                         </div>
                         <form action="{{ route('categories.update', $category) }}" method="POST">
                             @method('PUT')

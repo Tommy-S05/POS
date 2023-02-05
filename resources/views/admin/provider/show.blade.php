@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Proveedor')
+@section('title', 'Información del Proveedor')
 
 @section('styles')
 

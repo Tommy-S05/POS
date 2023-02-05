@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Editar Proveedores')
+@section('title', 'Edición de Proveedores')
 
 @section('styles')
 @endsection
@@ -17,13 +17,13 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Editar Proveedor
+                Edición de Proveedor
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Panel de Administrador</a></li>
                     <li class="breadcrumb-item" aria-current="page"><a href="{{ route('providers.index') }}">Proveedores</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Editar Proveedor</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edición de Proveedor</li>
                 </ol>
             </nav>
         </div>
@@ -32,7 +32,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Editar Proveedor</h4>
+                            <h4 class="card-title">Edición de Proveedor</h4>
                         </div>
 {{--                        {!! Form::model($provider, ['route'=>['providers.update', $provider], 'method'=> 'PUT']) !!}--}}
 

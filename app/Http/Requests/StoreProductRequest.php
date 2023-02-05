@@ -25,10 +25,13 @@ class StoreProductRequest extends FormRequest
     {
         return [
             "name" => 'required|string|max:100|unique:products',
-            "image" => 'required|dimensions:min_width=100,min_height=200',
+            "picture" => 'required',
+//            "image" => 'required|dimensions:min_width=100,min_height=200',
             "sell_price" => 'required',
-            "category_id" => 'required|integer|exists:App\Models\Category, id',
-            "provider_id" => 'required|integer|exists:App\Models\Provider, id'
+            "category_id" => 'required|integer',
+            "provider_id" => 'required|integer'
+//            "category_id" => 'required|integer|exists:App\Models\Category, id',
+//            "provider_id" => 'required|integer|exists:App\Models\Provider, id'
         ];
     }
 
@@ -40,18 +43,18 @@ class StoreProductRequest extends FormRequest
             'name.max' => 'Solo se permiten 100 caracteres.',
             'name.unique' => 'El producto ya está registrado',
 
-            'image.required' => 'Este campo es requerido.',
-            'image.dimensions' => 'Solo se permiten imágenes de 100x200 px.',
+            'picture.required' => 'Este campo es requerido.',
+//            'image.dimensions' => 'Solo se permiten imágenes de 100x200 px.',
 
             'sell_price.required' => 'Este campo es requerido.',
 
             'category_id.required' => 'Este campo es requerido.',
             'category_id.integer' => 'El valor no es correcto.',
-            'category_id.exists' => 'La categoria no existe.',
+//            'category_id.exists' => 'La categoria no existe.',
 
             'provider_id.required' => 'Este campo es requerido.',
             'provider_id.integer' => 'El valor no es correcto.',
-            'provider_id.exists' => 'El proveedor no existe.'
+//            'provider_id.exists' => 'El proveedor no existe.'
         ];
     }
 }
