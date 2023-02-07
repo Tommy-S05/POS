@@ -18,6 +18,11 @@ class ProviderFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->unique()->name(),
+            'email' => $this->faker->unique()->email(),
+            'ruc_number' => $this->faker->unique()->numberBetween(10000000000, 99999999999),
+            'address' => $this->faker->optional()->address(),
+            'phone' => $this->faker->unique()->phoneNumber()
         ];
     }
 }

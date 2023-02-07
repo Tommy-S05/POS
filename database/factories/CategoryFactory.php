@@ -18,6 +18,8 @@ class CategoryFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->unique()->firstNameMale(),
+            'description' => $this->faker->optional()->paragraph(2)
         ];
     }
 }

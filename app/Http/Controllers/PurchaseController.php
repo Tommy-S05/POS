@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Purchase;
 use App\Http\Requests\StorePurchaseRequest;
 use App\Http\Requests\UpdatePurchaseRequest;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
+//    public function __construct(){
+//        $this->middleware('auth');
+//    }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +34,8 @@ class PurchaseController extends Controller
     public function create()
     {
         $providers = Provider::all();
-        return view('admin.purchase.create', compact('providers'));
+        $products = Product::all();
+        return view('admin.purchase.create', compact('providers', 'products'));
     }
 
     /**
@@ -39,9 +46,12 @@ class PurchaseController extends Controller
      */
     public function store(StorePurchaseRequest $request)
     {
-        $newPurchase = Purchase::create($request->all());
+        $newPurchase = Purchase::create($request->all()+[
+                'user_id'=> Auth::user()->id,
+                'purchase_date' => Carbon::now()->format('d-m-Y H:i:s')
+            ]);
         foreach ($request->product_id as $key => $product){
-            $results = array("product_id" => $request->product_id[$key],
+            $results[] = array("product_id" => $request->product_id[$key],
                 "quantity" => $request->quantity[$key], "price" => $request->price[$key]);
         }
         $newPurchase->purchaseDetails()->createMany($results);

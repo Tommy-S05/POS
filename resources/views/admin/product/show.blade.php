@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="border-bottom text-center pb-4">
-                                    <img src="{{ asset('images/'. $product->image) }}" class="img-lg mb-3">
+                                    <img src="{{ file_exists('images/'. $product->image) ? asset('images/'. $product->image) : url($product->image)}}" class="img-lg mb-3">
                                     <h3>
                                         {{ $product->name }}
                                     </h3>

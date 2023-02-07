@@ -18,6 +18,12 @@ class ClientFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->name(),
+            'cedula' => $this->faker->unique()->numberBetween(10000000000, 99999999999),
+            'ruc' => $this->faker->unique()->numberBetween(10000000000, 99999999999),
+            'address' => $this->faker->optional()->address(),
+            'phone' => $this->faker->unique()->phoneNumber(),
+            'email' => $this->faker->unique()->email()
         ];
     }
 }
