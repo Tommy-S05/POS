@@ -39,7 +39,7 @@
                             @include('admin.purchase._form')
                         </div>
                         <div class="card-footer text-muted">
-                            <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                            <button type="submit" id="registrar" class="btn btn-primary float-right">Registrar</button>
                             <a class="btn btn-light" href="{{ route('purchases.index') }}">Cancelar</a>
                         </div>
                     </form>
@@ -64,7 +64,7 @@
         total = 0.00;
         subtotal = [];
 
-        $("#guardar").hide();
+        $("#registrar").hide();
 
         function agregar() {
             product_id = $("#product_id").val();
@@ -125,10 +125,10 @@
 
         function evaluar() {
             if (total > 0){
-                $("#guardar").show();
+                $("#registrar").show();
             }
             else {
-                $("#guardar").hide();
+                $("#registrar").hide();
             }
         }
 

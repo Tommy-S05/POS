@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('provider_id')->constrained('providers');
             $table->foreignId('user_id')->constrained('users');
             $table->dateTime('purchase_date');
-            $table->decimal('tax');
-            $table->decimal('total');
+            $table->decimal('tax',12,2);
+            $table->decimal('total', 12, 2);
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
             $table->string('picture')->nullable();
 

@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-//    public function __construct(){
-//        $this->middleware('auth');
-//    }
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +48,7 @@ class PurchaseController extends Controller
     {
         $newPurchase = Purchase::create($request->all()+[
                 'user_id'=> Auth::user()->id,
-                'purchase_date' => Carbon::now()->format('d-m-Y H:i:s')
+                'purchase_date' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
         foreach ($request->product_id as $key => $product){
             $results[] = array("product_id" => $request->product_id[$key],

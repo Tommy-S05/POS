@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('client_id')->constrained('clients');
             $table->foreignId('user_id')->constrained('users');
             $table->dateTime('sale_date');
-            $table->decimal('tax');
-            $table->decimal('total');
+            $table->decimal('tax',12,2);
+            $table->decimal('total',12,2);
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
             $table->timestamps();
         });

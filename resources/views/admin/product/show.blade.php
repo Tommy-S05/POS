@@ -139,7 +139,7 @@
                                                 Precio de Venta
                                             </strong>
                                             <p class="text-muted">
-                                                {{ $product->sell_price }}
+                                                $RD {{ number_format($product->sell_price, 2) }}
                                             </p>
                                             <hr>
 

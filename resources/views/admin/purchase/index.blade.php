@@ -71,7 +71,7 @@
                                             {{ $purchase->purchase_date }}
                                         </td>
                                         <td>
-                                            {{ $purchase->total }}
+                                            {{ number_format($purchase->total, 2) }}
                                         </td>
                                         <td>
                                             {{ $purchase->status }}
@@ -79,10 +79,10 @@
                                         <td style="width: 50px">
                                             {{--                                                {!! Form::open(['route' => ['categories.destroy', $category], 'method' => 'DELETE']) !!}--}}
 
-                                            <form action="{{ route('purchases.destroy', $category) }}" method="POST">
+                                            <form action="{{ route('purchases.destroy', $purchase) }}" method="POST">
                                                 {{ csrf_field() }}
                                                 @method('DELETE')
-                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $category) }}" title="Editar">
+                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Editar">
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                                 <button class="border-0 bg-transparent p-0 ml-1" type="submit">
@@ -90,6 +90,15 @@
                                                         <i class="far fa-trash-alt"></i>
                                                     </a>
                                                 </button>
+                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Exportar">
+                                                    <i class="far fa-file-pdf"></i>
+                                                </a>
+                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Imprimir">
+                                                    <i class="fas fa-print"></i>
+                                                </a>
+                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Detalles">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
                                             </form>
                                             {{--                                                {!! Form::close() !!}--}}
                                         </td>

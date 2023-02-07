@@ -24,8 +24,8 @@
     </select>
 </div>
 <div class="form-group">
-    <label for="tax">Impuestos</label>
-    <input type="number" name="tax" id="tax" class="form-control" placeholder="Impuestos" required>
+{{--    <label for="tax">Impuestos</label>--}}
+    <input type="hidden" name="tax" id="tax" class="form-control" value="18">
 </div>
 <div class="form-group">
     <label for="product_id">Producto</label>
@@ -41,11 +41,11 @@
 </div>
 <div class="form-group">
     <label for="quantity">Cantidad</label>
-    <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Cantidad" required>
+    <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Cantidad">
 </div>
 <div class="form-group">
     <label for="price">Precio</label>
-    <input type="number" name="price" id="price" class="form-control" placeholder="Precio" required>
+    <input type="number" name="price" id="price" class="form-control" placeholder="Precio">
 </div>
 <div class="form-group">
     <button type="button" id="agregar" class="btn btn-primary float-right">

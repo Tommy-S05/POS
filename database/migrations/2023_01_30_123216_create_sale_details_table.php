@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('sale_id')->constrained('sales');
             $table->foreignId('product_id')->constrained('products');
             $table->integer('quantity');
-            $table->decimal('price');
-            $table->decimal('discount');
+            $table->decimal('price',12,2);
+            $table->decimal('discount',12,2);
             $table->timestamps();
         });
     }
