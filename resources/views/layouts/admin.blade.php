@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
+    @vite(['resources/sass/fonts.scss'])
     <!-- plugins:css -->
 {{--    <link rel="stylesheet" href="Melody/vendors/iconfonts/font-awesome/css/all.min.css">--}}
     {!! Html::style("Melody/vendors/iconfonts/font-awesome/css/all.min.css") !!}
@@ -448,7 +449,7 @@
 {{--<script src="Melody/js/dashboard.js"></script>--}}
 {!! Html::script("Melody/js/dashboard.js") !!}
 <!-- End custom js for this page-->
-
+<script src="https://kit.fontawesome.com/da69ce0f95.js" crossorigin="anonymous"></script>
 @yield('scripts')
 </body>
 

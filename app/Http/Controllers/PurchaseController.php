@@ -67,7 +67,12 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        return view('admin.purchase.show', compact('purchase'));
+        $subtotal = 0;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $purchaseDetail){
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+        return view('admin.purchase.show', compact('purchase', 'purchaseDetails', 'subtotal'));
     }
 
     /**
@@ -78,8 +83,8 @@ class PurchaseController extends Controller
      */
     public function edit(Purchase $purchase)
     {
-        $providers = Provider::all();
-        return view('admin.purchase.edit', compact('purchase', 'providers'));
+//        $providers = Provider::all();
+//        return view('admin.purchase.edit', compact('purchase', 'providers'));
     }
 
     /**

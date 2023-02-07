@@ -2,6 +2,7 @@
 @section('title', 'Gestión de Compras')
 
 @section('styles')
+
 @endsection
 
 @section('options')
@@ -60,13 +61,17 @@
                                     <th>Fecha</th>
                                     <th>Total</th>
                                     <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <th style="width: 100px">Acciones</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($purchases as $purchase)
                                     <tr>
-                                        <th scope="row">{{ $purchase->id }}</th>
+                                        <th scope="row">
+                                            <a href="{{ route('purchases.show', $purchase) }}">
+                                                {{ $purchase->id }}
+                                            </a>
+                                        </th>
                                         <td>
                                             {{ $purchase->purchase_date }}
                                         </td>
@@ -76,31 +81,24 @@
                                         <td>
                                             {{ $purchase->status }}
                                         </td>
-                                        <td style="width: 50px">
-                                            {{--                                                {!! Form::open(['route' => ['categories.destroy', $category], 'method' => 'DELETE']) !!}--}}
-
-                                            <form action="{{ route('purchases.destroy', $purchase) }}" method="POST">
-                                                {{ csrf_field() }}
-                                                @method('DELETE')
-                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Editar">
-                                                    <i class="far fa-edit"></i>
-                                                </a>
-                                                <button class="border-0 bg-transparent p-0 ml-1" type="submit">
-                                                    <a class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </a>
-                                                </button>
-                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Exportar">
-                                                    <i class="far fa-file-pdf"></i>
-                                                </a>
-                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Imprimir">
-                                                    <i class="fas fa-print"></i>
-                                                </a>
-                                                <a class="jsgrid-button jsgrid-edit-button p-0" href="{{ route('purchases.edit', $purchase) }}" title="Detalles">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </form>
-                                            {{--                                                {!! Form::close() !!}--}}
+                                        <td style="width: 100px">
+{{--                                            <a class="jsgrid-button jsgrid-edit-button" href="{{ route('purchases.edit', $purchase) }}" title="Editar">--}}
+{{--                                                <i class="far fa-edit"></i>--}}
+{{--                                            </a>--}}
+{{--                                            <button class="border-0 bg-transparent p-0 ml-1" type="submit">--}}
+{{--                                                <a class="jsgrid-button jsgrid-delete-button" type="submit" title="Eliminar">--}}
+{{--                                                    <i class="far fa-trash-alt"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </button>--}}
+                                            <a href="#" class="jsgrid-button jsgrid-edit-button" title="Exportar">
+                                                <i class="fa-regular fa-file-pdf"></i>
+                                            </a>
+                                            <a href="#" class="jsgrid-button jsgrid-edit-button" title="Imprimir">
+                                                <i class="fa-solid fa-print"></i>
+                                            </a>
+                                            <a href="{{ route('purchases.show', $purchase) }}" class="jsgrid-button jsgrid-edit-button" title="Detalles">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/prueba2', function () {
+    return view('prueba2');
+});
 Route::resource('categories', 'App\Http\Controllers\CategoryController')->names('categories');
 Route::resource('clients', 'App\Http\Controllers\ClientController')->names('clients');
 Route::resource('products', 'App\Http\Controllers\ProductController')->names('products');
