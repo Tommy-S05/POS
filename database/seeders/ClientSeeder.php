@@ -16,12 +16,12 @@ class ClientSeeder extends Seeder
     public function run()
     {
         $client1 = new Client();
-        $client1->name = "Tommy Sánchez";
-        $client1->cedula = "40230431708";
+        $client1->name = "Mercedes Matos";
+        $client1->cedula = "40234047765";
         $client1->ruc = "489621307843";
         $client1->address = "Torre Europa";
-        $client1->phone = "8098522693";
-        $client1->email = "tommy-elpapi@hotmail.com";
+        $client1->phone = "8299573620";
+        $client1->email = "mercedesmatos31@hotmail.com";
         $client1->save();
 
         $client2 = new Client();

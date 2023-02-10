@@ -1,16 +1,3 @@
-{{--'provider_id', check--}}
-{{--'user_id', controlado--}}
-{{--'purchase_date', controlador--}}
-{{--'tax' check,--}}
-{{--'total', check (js)--}}
-{{--'status', default--}}
-{{--'picture' todavia no--}}
-
-{{--'purchase_id', controlador--}}
-{{--'product_id', check--}}
-{{--'quantity', check--}}
-{{--'price' check--}}
-
 <div class="form-group">
     <label for="provider_id">Proveedor</label>
     <br>
