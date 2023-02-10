@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,12 +31,12 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/prueba2', function () {
-    return view('prueba2');
-});
 Route::resource('categories', 'App\Http\Controllers\CategoryController')->names('categories');
 Route::resource('clients', 'App\Http\Controllers\ClientController')->names('clients');
 Route::resource('products', 'App\Http\Controllers\ProductController')->names('products');
 Route::resource('providers', 'App\Http\Controllers\ProviderController')->names('providers');
 Route::resource('purchases', 'App\Http\Controllers\PurchaseController')->names('purchases');
 Route::resource('sales', 'App\Http\Controllers\SaleController')->names('sales');
+
+Route::get('purchases/pdf/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'pdf'])->name('purchases.pdf');
+Route::get('sales/pdf/{sale}', [\App\Http\Controllers\SaleController::class, 'pdf'])->name('sales.pdf');

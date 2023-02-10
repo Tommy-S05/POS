@@ -90,7 +90,7 @@
 {{--                                                    <i class="far fa-trash-alt"></i>--}}
 {{--                                                </a>--}}
 {{--                                            </button>--}}
-                                            <a href="#" class="jsgrid-button jsgrid-edit-button" title="Exportar">
+                                            <a href="{{ route('purchases.pdf', $purchase) }}" class="jsgrid-button jsgrid-edit-button" title="Exportar">
                                                 <i class="fa-regular fa-file-pdf"></i>
                                             </a>
                                             <a href="#" class="jsgrid-button jsgrid-edit-button" title="Imprimir">

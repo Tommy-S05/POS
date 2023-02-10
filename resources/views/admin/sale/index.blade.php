@@ -73,7 +73,7 @@
                                             {{ $sale->status }}
                                         </td>
                                         <td style="width: 100px">
-                                            <a href="#" class="jsgrid-button jsgrid-edit-button" title="Exportar">
+                                            <a href="{{ route('sales.pdf', $sale) }}" class="jsgrid-button jsgrid-edit-button" title="Exportar">
                                                 <i class="fa-regular fa-file-pdf"></i>
                                             </a>
                                             <a href="#" class="jsgrid-button jsgrid-edit-button" title="Imprimir">
@@ -96,7 +96,10 @@
 @endsection
 
 @section('scripts')
-    {!! Html::script('Melody/js/data-table.js') !!}
-    {!! Html::script('Melody/js/alerts.js') !!}
-    {!! Html::script('Melody/js/avgrund.js') !!}
+    @vite(['resources/Melody/js/data-table.js'])
+    @vite(['resources/Melody/js/alerts.js'])
+    @vite(['resources/Melody/js/avgrund.js'])
+{{--    {!! Html::script('Melody/js/data-table.js') !!}--}}
+{{--    {!! Html::script('Melody/js/alerts.js') !!}--}}
+{{--    {!! Html::script('Melody/js/avgrund.js') !!}--}}
 @endsection

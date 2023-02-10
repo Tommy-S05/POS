@@ -7,14 +7,15 @@ use App\Models\Product;
 use App\Models\Sale;
 use App\Http\Requests\StoreSaleRequest;
 use App\Http\Requests\UpdateSaleRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class SaleController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+//    public function __construct(){
+//        $this->middleware('auth');
+//    }
 
     /**
      * Display a listing of the resource.
@@ -115,5 +116,19 @@ class SaleController extends Controller
     {
 //        $sale->delete();
 //        return redirect()->route('sales.index');
+    }
+
+    public function pdf(Sale $sale)
+    {
+        $subtotal = 0;
+        $saleDetails = $sale->saleDetails;
+        foreach ($saleDetails as $saleDetail){
+            $subtotal += $saleDetail->quantity * $saleDetail->price -
+                (($saleDetail->quantity * $saleDetail->price) * $saleDetail->discount / 100);
+        }
+
+//        return view('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
+        $pdf = Pdf::loadView('admin.sale.pdf', compact('sale', 'subtotal', 'saleDetails'));
+        return $pdf->stream('Reporte_de_Venta_'.$sale->id.'.pdf');
     }
 }

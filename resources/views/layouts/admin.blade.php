@@ -449,6 +449,14 @@
 {{--<script src="Melody/js/dashboard.js"></script>--}}
 {!! Html::script("Melody/js/dashboard.js") !!}
 <!-- End custom js for this page-->
+{{--@vite(['resources/Melody/vendors/js/vendor.bundle.base.js'])--}}
+{{--@vite(['resources/Melody/vendors/js/vendor.bundle.addons.js'])--}}
+{{--@vite(['resources/Melody/js/off-canvas.js'])--}}
+{{--@vite(['resources/Melody/js/hoverable-collapse.js'])--}}
+{{--@vite(['resources/Melody/js/misc.js'])--}}
+{{--@vite(['resources/Melody/js/settings.js'])--}}
+{{--@vite(['resources/Melody/js/todolist.js'])--}}
+{{--@vite(['resources/Melody/js/dashboard.js'])--}}
 <script src="https://kit.fontawesome.com/da69ce0f95.js" crossorigin="anonymous"></script>
 @yield('scripts')
 </body>

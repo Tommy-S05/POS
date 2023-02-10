@@ -7,14 +7,15 @@ use App\Models\Provider;
 use App\Models\Purchase;
 use App\Http\Requests\StorePurchaseRequest;
 use App\Http\Requests\UpdatePurchaseRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+//    public function __construct(){
+//        $this->middleware('auth');
+//    }
     /**
      * Display a listing of the resource.
      *
@@ -111,5 +112,17 @@ class PurchaseController extends Controller
     {
 //        $purchase->delete();
 //        return redirect()->route('purchases.index');
+    }
+
+    public function pdf(Purchase $purchase)
+    {
+        $subtotal = 0;
+        $purchaseDetails = $purchase->purchaseDetails;
+        foreach ($purchaseDetails as $purchaseDetail){
+            $subtotal += $purchaseDetail->quantity * $purchaseDetail->price;
+        }
+//    return view('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
+        $pdf = Pdf::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
+        return $pdf->stream('Reporte_de_Compra_'.$purchase->id.'.pdf');
     }
 }

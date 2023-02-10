@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+#datos {
+    float: left;
+    margin-top: 0%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#encabezado {
+    text-align: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    font-size: 15px;
+}
+
+#fact {
+    float: right;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-size: 20px;
+    background: #33AFFF;
+}
+
+section {
+    clear: left;
+}
+
+#cliente {
+    text-align: left;
+}
+
+#fac, #fv, #fa {
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+#faproveedor {
+    width: 40%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 15px;
+}
+
+#faproveedor thead {
+    padding: 20px;
+    background: #33AFFF;
+    text-align: left;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+#faccomprador {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 15px;
+}
+
+#faccomprador thead {
+    padding: 20px;
+    background: #33AFFF;
+    text-align: center;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+#facproducto {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 15px;
+}
+
+#facproducto thead {
+    padding: 20px;
+    background: #33AFFF;
+    text-align: center;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.contenido{
+    text-align: center;
+}
