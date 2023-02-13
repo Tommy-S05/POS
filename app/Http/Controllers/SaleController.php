@@ -122,6 +122,7 @@ class SaleController extends Controller
 //        return redirect()->route('sales.index');
     }
 
+    //Paquete de PDF de DOMPDF
     public function pdf(Sale $sale)
     {
         $subtotal = 0;
@@ -135,6 +136,7 @@ class SaleController extends Controller
         return $pdf->stream('Reporte_de_Venta_'.$sale->id.'.pdf');
     }
 
+    //Print Driver de mike42 escpos-php
     public function print(Sale $sale){
         try {
             $subtotal = 0;
