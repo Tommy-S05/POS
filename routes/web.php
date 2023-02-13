@@ -35,8 +35,11 @@ Route::resource('categories', 'App\Http\Controllers\CategoryController')->names(
 Route::resource('clients', 'App\Http\Controllers\ClientController')->names('clients');
 Route::resource('products', 'App\Http\Controllers\ProductController')->names('products');
 Route::resource('providers', 'App\Http\Controllers\ProviderController')->names('providers');
-Route::resource('purchases', 'App\Http\Controllers\PurchaseController')->names('purchases');
-Route::resource('sales', 'App\Http\Controllers\SaleController')->names('sales');
+Route::resource('purchases', 'App\Http\Controllers\PurchaseController')->names('purchases')->except(['edit', 'update', 'destroy']);
+Route::resource('sales', 'App\Http\Controllers\SaleController')->names('sales')->except(['edit', 'update', 'destroy']);
+Route::resource('businesses', 'App\Http\Controllers\BusinessController')->names('businesses')->only(['index', 'update']);
+Route::resource('businesses', 'App\Http\Controllers\PrinterController')->names('printers')->only(['index', 'update']);
 
 Route::get('purchases/pdf/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'pdf'])->name('purchases.pdf');
 Route::get('sales/pdf/{sale}', [\App\Http\Controllers\SaleController::class, 'pdf'])->name('sales.pdf');
+Route::get('sales/print/{sale}', [\App\Http\Controllers\SaleController::class, 'print'])->name('sales.print');

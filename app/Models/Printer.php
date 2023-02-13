@@ -9,14 +9,9 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * @mixin Builder
  */
-
-class Category extends Model
+class Printer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description',];
-
-    public function products(){
-        return $this->hasMany(Product::class);
-    }
+    protected $fillable = ['name'];
 }
