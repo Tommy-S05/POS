@@ -134,4 +134,17 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+
+    public function change_status(Product $product){
+        if ($product->status == 'ACTIVE'){
+            $product->status = 'DEACTIVATE';
+            $product->save();
+            return redirect()->back();
+        }
+        else{
+            $product->status = 'ACTIVE';
+            $product->save();
+        }
+        return redirect()->back();
+    }
 }

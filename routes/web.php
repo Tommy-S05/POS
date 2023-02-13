@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PurchaseController;
+//use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +43,7 @@ Route::resource('businesses', 'App\Http\Controllers\PrinterController')->names('
 Route::get('purchases/pdf/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'pdf'])->name('purchases.pdf');
 Route::get('sales/pdf/{sale}', [\App\Http\Controllers\SaleController::class, 'pdf'])->name('sales.pdf');
 Route::get('sales/print/{sale}', [\App\Http\Controllers\SaleController::class, 'print'])->name('sales.print');
+Route::get('purchases/upload/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'upload'])->name('purchases.upload');
+Route::get('products/change/{product}', [\App\Http\Controllers\ProductController::class, 'change_status'])->name('products.change');
+Route::get('purchases/change/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'change_status'])->name('purchases.change');
+Route::get('sales/change/{sale}', [\App\Http\Controllers\SaleController::class, 'change_status'])->name('sales.change');

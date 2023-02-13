@@ -9,6 +9,7 @@ use App\Http\Requests\StorePurchaseRequest;
 use App\Http\Requests\UpdatePurchaseRequest;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
@@ -124,5 +125,30 @@ class PurchaseController extends Controller
 //    return view('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
         $pdf = Pdf::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
         return $pdf->stream('Reporte_de_Compra_'.$purchase->id.'.pdf');
+    }
+
+    public function upload(Request $request, Purchase $purchase){
+        $filename = "";
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $destinationPath = 'images/';
+            $filename = time() . "-" . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('image')->move($destinationPath, $filename);
+        }
+
+        $purchase->update(['picture' => $filename]);
+        return redirect()->route('purchases.index');
+    }
+    public function change_status(Purchase $purchase){
+        if ($purchase->status == 'VALID'){
+            $purchase->status = 'CANCELED';
+            $purchase->save();
+            return redirect()->back();
+        }
+        else{
+            $purchase->status = 'VALID';
+            $purchase->save();
+        }
+        return redirect()->back();
     }
 }

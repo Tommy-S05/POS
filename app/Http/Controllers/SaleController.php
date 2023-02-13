@@ -160,4 +160,16 @@ class SaleController extends Controller
         }
 
     }
+    public function change_status(Sale $sale){
+        if ($sale->status == 'VALID'){
+            $sale->status = 'CANCELED';
+            $sale->save();
+            return redirect()->back();
+        }
+        else{
+            $sale->status = 'VALID';
+            $sale->save();
+        }
+        return redirect()->back();
+    }
 }
