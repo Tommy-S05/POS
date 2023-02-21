@@ -14,38 +14,26 @@ use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-//    public function __construct(){
-//        $this->middleware('auth');
-//    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('can:purchases.index')->only(['index']);
+        $this->middleware('can:purchases.create')->only(['create', 'store']);
+        $this->middleware('can:purchases.show')->only(['show']);
+        $this->middleware('can:purchases.pdf')->only(['pdf']);
+        $this->middleware('can:purchases.upload')->only(['upload']);
+        $this->middleware('can:purchases.change')->only(['change_status']);
+    }
     public function index()
     {
         $purchases = Purchase::all();
         return view('admin.purchase.index', compact('purchases'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $providers = Provider::all();
         $products = Product::all();
         return view('admin.purchase.create', compact('providers', 'products'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePurchaseRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StorePurchaseRequest $request)
     {
         $newPurchase = Purchase::create($request->all()+[
@@ -61,13 +49,6 @@ class PurchaseController extends Controller
 
         return redirect()->route('purchases.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
     public function show(Purchase $purchase)
     {
         $subtotal = 0;
@@ -77,44 +58,21 @@ class PurchaseController extends Controller
         }
         return view('admin.purchase.show', compact('purchase', 'purchaseDetails', 'subtotal'));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Purchase $purchase)
     {
 //        $providers = Provider::all();
 //        return view('admin.purchase.edit', compact('purchase', 'providers'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePurchaseRequest  $request
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdatePurchaseRequest $request, Purchase $purchase)
     {
 //        $purchase->update($request->all());
 //        return redirect()->route('purchases.index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Purchase  $purchase
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Purchase $purchase)
     {
 //        $purchase->delete();
 //        return redirect()->route('purchases.index');
     }
-
     public function pdf(Purchase $purchase)
     {
         $subtotal = 0;
@@ -126,7 +84,6 @@ class PurchaseController extends Controller
         $pdf = Pdf::loadView('admin.purchase.pdf', compact('purchase', 'subtotal', 'purchaseDetails'));
         return $pdf->stream('Reporte_de_Compra_'.$purchase->id.'.pdf');
     }
-
     public function upload(Request $request, Purchase $purchase){
         $filename = "";
         if ($request->hasFile('image')) {

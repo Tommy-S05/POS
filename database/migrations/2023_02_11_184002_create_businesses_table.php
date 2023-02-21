@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 50);
             $table->string('description');
             $table->string('logo');
-            $table->string('mail');
+            $table->string('email');
             $table->string('address');
-            $table->string('ruc');
+            $table->string('ruc_number', 15);
+            $table->string('phone', 20);
             $table->timestamps();
         });
     }

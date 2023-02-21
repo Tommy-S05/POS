@@ -22,6 +22,7 @@ class ProductFactory extends Factory
             //
             "code" => $this->faker->unique()->numberBetween(0001,9999),
             "name" => $this->faker->unique()->sentence(1),
+            "stock" => random_int(5, 20),
             "image" => $this->faker->imageUrl(200,200),
             "sell_price" => $this->faker->numberBetween(20000, 200000),
             "category_id" => Category::inRandomOrder()->value('id') ?: factory(Category::class),

@@ -6,8 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('title')</title>
-    @vite(['resources/sass/fonts.scss'])
+{{--    <title>@yield('title')</title>--}}
+{{--    @vite(['resources/sass/fonts.scss'])--}}
     <!-- plugins:css -->
 {{--    <link rel="stylesheet" href="Melody/vendors/iconfonts/font-awesome/css/all.min.css">--}}
     {!! Html::style("Melody/vendors/iconfonts/font-awesome/css/all.min.css") !!}
@@ -458,6 +458,7 @@
 {{--@vite(['resources/Melody/js/todolist.js'])--}}
 {{--@vite(['resources/Melody/js/dashboard.js'])--}}
 <script src="https://kit.fontawesome.com/da69ce0f95.js" crossorigin="anonymous"></script>
+{{--@vite(['src' => 'https://kit.fontawesome.com/da69ce0f95.js', 'crossorigin' => 'anonymous'])--}}
 @yield('scripts')
 </body>
 

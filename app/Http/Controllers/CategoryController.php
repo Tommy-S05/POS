@@ -6,13 +6,17 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
-use Illuminate\Database\Eloquent\Builder;
 
-/**
- * @mixin Builder
- */
 class CategoryController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('can:categories.index')->only(['index']);
+        $this->middleware('can:categories.create')->only(['create', 'store']);
+        $this->middleware('can:categories.show')->only(['show']);
+        $this->middleware('can:categories.edit')->only(['edit', 'update']);
+        $this->middleware('can:categories.destroy')->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

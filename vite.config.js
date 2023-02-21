@@ -23,6 +23,7 @@ export default defineConfig({
                 'resources/Melody/js/data-table.js',
                 'resources/Melody/js/alerts.js',
                 'resources/Melody/js/avgrund.js',
+                'resources/Melody/js/dropify.js',
             ],
             refresh: true,
         }),

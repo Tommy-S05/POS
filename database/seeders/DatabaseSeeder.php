@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Business;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Product;
@@ -27,14 +28,18 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
+            PermissionSeeder::class,
+            UserSeeder::class,
             CategorySeeder::class,
             ProviderSeeder::class,
             ProductSeeder::class,
-            ClientSeeder::class
+            ClientSeeder::class,
+            PrinterSeeder::class,
         ]);
         Category::factory(5)->create();
         Client::factory(15)->create();
         Provider::factory(5)->create();
         Product::factory(15)->create();
+        Business::factory(1)->create();
     }
 }

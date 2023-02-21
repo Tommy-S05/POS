@@ -100,5 +100,6 @@
 @endsection
 
 @section('scripts')
-    {!! Html::script('Melody/js/dropify.js') !!}
+{{--    {!! Html::script('Melody/js/dropify.js') !!}--}}
+    @vite(['resources/Melody/js/dropify.js'])
 @endsection

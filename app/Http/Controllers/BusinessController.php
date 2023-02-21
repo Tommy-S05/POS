@@ -9,81 +9,48 @@ use App\Http\Requests\UpdateBusinessRequest;
 
 class BusinessController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('can:businesses.index')->only(['index']);
+        $this->middleware('can:businesses.update')->only(['update']);
+    }
     public function index()
     {
         $business = Business::where('id', '=', 1)->firstOrFail();
         return view('admin.business.index', compact('business'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBusinessRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBusinessRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Business  $business
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Business $business)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Business  $business
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Business $business)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBusinessRequest  $request
-     * @param  \App\Models\Business  $business
-     * @return \Illuminate\Http\Response
-     */
+//    public function create()
+//    {
+//        //
+//    }
+//    public function store(StoreBusinessRequest $request)
+//    {
+//        //
+//    }
+//    public function show(Business $business)
+//    {
+//        //
+//    }
+//    public function edit(Business $business)
+//    {
+//        //
+//    }
     public function update(UpdateBusinessRequest $request, Business $business)
     {
+//        $filename = "";
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $destinationPath = 'images/';
+            $filename = time() . "-" . $file->getClientOriginalName();
+            $uploadSuccess = $request->file('picture')->move($destinationPath, $filename);
+            $business->logo = $filename;
+        }
+        
         $business->update($request->all());
         return redirect()->route('businesses.index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Business  $business
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Business $business)
-    {
-        //
-    }
+//    public function destroy(Business $business)
+//    {
+//        //
+//    }
 }

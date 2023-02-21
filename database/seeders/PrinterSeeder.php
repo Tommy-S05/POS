@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Printer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class PrinterSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Printer::create(['name' => 'AURES ODP-333']);
     }
 }

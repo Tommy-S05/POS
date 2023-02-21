@@ -17,7 +17,13 @@ class BusinessFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->firstName(),
+            'description' => $this->faker->sentence(10),
+            'logo' => $this->faker->imageUrl(200,200),
+            'email' => $this->faker->companyEmail(),
+            'address' => $this->faker->address(),
+            'ruc_number' => $this->faker->unique()->numberBetween(10000000000, 99999999999),
+            'phone' => $this->faker->phoneNumber()
         ];
     }
 }

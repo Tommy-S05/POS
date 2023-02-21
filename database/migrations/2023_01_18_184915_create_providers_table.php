@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('ruc_number', 15)->unique();
             $table->string('address')->nullable();
-            $table->string('phone', 15)->unique();
+            $table->string('phone', 20)->unique();
             $table->timestamps();
         });
     }

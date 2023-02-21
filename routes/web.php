@@ -1,8 +1,19 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-//use App\Http\Controllers\PurchaseController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\PrinterController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,28 +42,32 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('categories', 'App\Http\Controllers\CategoryController')->names('categories');
+Route::get('sales/reports_day', [ReportController::class, 'reports_day'])->name('reports.day');
+Route::get('sales/reports_date', [ReportController::class, 'reports_date'])->name('reports.date');
+Route::post('sales/reports_results', [ReportController::class, 'reports_results'])->name('reports.results');
 
-Route::resource('clients', 'App\Http\Controllers\ClientController')->names('clients');
+Route::resource('categories', CategoryController::class)->names('categories');
 
-Route::resource('products', 'App\Http\Controllers\ProductController')->names('products');
-Route::get('products/change/{product}', [\App\Http\Controllers\ProductController::class, 'change_status'])->name('products.change');
+Route::resource('clients', ClientController::class)->names('clients');
 
-Route::resource('providers', 'App\Http\Controllers\ProviderController')->names('providers');
+Route::resource('products', ProductController::class)->names('products');
+Route::get('products/change/{product}', [ProductController::class, 'change_status'])->name('products.change');
 
-Route::resource('purchases', 'App\Http\Controllers\PurchaseController')->names('purchases')->except(['edit', 'update', 'destroy']);
-Route::get('purchases/pdf/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'pdf'])->name('purchases.pdf');
-Route::get('purchases/upload/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'upload'])->name('purchases.upload');
-Route::get('purchases/change/{purchase}', [\App\Http\Controllers\PurchaseController::class, 'change_status'])->name('purchases.change');
+Route::resource('providers', ProviderController::class)->names('providers');
 
-Route::resource('sales', 'App\Http\Controllers\SaleController')->names('sales')->except(['edit', 'update', 'destroy']);
-Route::get('sales/pdf/{sale}', [\App\Http\Controllers\SaleController::class, 'pdf'])->name('sales.pdf');
-Route::get('sales/print/{sale}', [\App\Http\Controllers\SaleController::class, 'print'])->name('sales.print');
-Route::get('sales/change/{sale}', [\App\Http\Controllers\SaleController::class, 'change_status'])->name('sales.change');
+Route::resource('purchases', PurchaseController::class)->names('purchases')->except(['edit', 'update', 'destroy']);
+Route::get('purchases/pdf/{purchase}', [PurchaseController::class, 'pdf'])->name('purchases.pdf');
+Route::get('purchases/upload/{purchase}', [PurchaseController::class, 'upload'])->name('purchases.upload');
+Route::get('purchases/change/{purchase}', [PurchaseController::class, 'change_status'])->name('purchases.change');
 
-Route::resource('businesses', 'App\Http\Controllers\BusinessController')->names('businesses')->only(['index', 'update']);
-Route::resource('businesses', 'App\Http\Controllers\PrinterController')->names('printers')->only(['index', 'update']);
+Route::resource('sales', SaleController::class)->names('sales')->except(['edit', 'update', 'destroy']);
+Route::get('sales/pdf/{sale}', [SaleController::class, 'pdf'])->name('sales.pdf');
+Route::get('sales/print/{sale}', [SaleController::class, 'print'])->name('sales.print');
+Route::get('sales/change/{sale}', [SaleController::class, 'change_status'])->name('sales.change');
 
-Route::get('sales/reports_day', [\App\Http\Controllers\ReportController::class, 'reports_day'])->name('reports.day');
-Route::get('sales/reports_date', [\App\Http\Controllers\ReportController::class, 'reports_date'])->name('reports.date');
-Route::post('sales/reports_results', [\App\Http\Controllers\ReportController::class, 'reports_results'])->name('reports.results');
+Route::resource('businesses', BusinessController::class)->names('businesses')->only(['index', 'update']);
+Route::resource('printers', PrinterController::class)->names('printers')->only(['index', 'update']);
+
+//Route::resource('users', UserController::class)->names('users')->only(['index', 'edit', 'update']);
+Route::resource('users', UserController::class)->names('users');
+Route::resource('roles', RoleController::class)->names('roles');
