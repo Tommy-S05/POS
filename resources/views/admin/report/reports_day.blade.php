@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Gestión de Ventas')
+@section('title', 'Reporte de Ventas')
 
 @section('styles')
 
@@ -18,12 +18,12 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                Ventas
+                Reporte de Ventas
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Panel de Administrador</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Ventas</li>
+                    <li class="breadcrumb-item active" aria-current="page">Reporte de Ventas</li>
                 </ol>
             </nav>
         </div>
@@ -32,18 +32,46 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Ventas</h4>
-                            <div class="btn-group">
-                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{ route('sales.create') }}" class="dropdown-item">
-                                        Registar
-                                    </a>
+                            <h4 class="card-title">Reporte de Ventas</h4>
+{{--                            <div class="btn-group">--}}
+{{--                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                    <i class="fas fa-ellipsis-v"></i>--}}
+{{--                                </a>--}}
+{{--                                <div class="dropdown-menu dropdown-menu-right">--}}
+{{--                                    <a href="{{ route('sales.create') }}" class="dropdown-item">--}}
+{{--                                        Registar--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-4 text-center">
+                                <span>Fecha de Consulta: <b></b></span>
+                                <div class="form-group">
+                                    <strong>
+                                        {{ \Carbon\Carbon::today()->format('d/m/Y') }}
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <span>Cantidad de Registros: <b></b></span>
+                                <div class="form-group">
+                                    <strong>
+                                        {{ $sales->count() }}
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 text-center">
+                                <span>Total de Ingresos: <b></b></span>
+                                <div class="form-group">
+                                    <strong>
+                                        $RD {{ number_format($total, 2) }}
+                                    </strong>
                                 </div>
                             </div>
                         </div>
+
                         <div class="table-responsive">
                             <table id="order-listing" class="table">
                                 <thead>
@@ -70,11 +98,7 @@
                                             {{ number_format($sale->total, 2) }}
                                         </td>
                                         <td>
-                                            @if($sale->status == 'VALID')
-                                                <a href="{{ route('sales.change', $sale) }}" class="btn btn-success pt-1 pb-1">VALIDO <i class="fa-solid fa-check"></i></a>
-                                            @else
-                                                <a href="{{ route('sales.change', $sale) }}" class="btn btn-danger pt-1 pb-1">CANCELADO <i class="fas fa-times"></i></a>
-                                            @endif
+                                            {{ $sale->status }}
                                         </td>
                                         <td style="width: 100px">
                                             <a href="{{ route('sales.pdf', $sale) }}" class="jsgrid-button jsgrid-edit-button" title="Exportar">
@@ -103,7 +127,4 @@
     @vite(['resources/Melody/js/data-table.js'])
     @vite(['resources/Melody/js/alerts.js'])
     @vite(['resources/Melody/js/avgrund.js'])
-{{--    {!! Html::script('Melody/js/data-table.js') !!}--}}
-{{--    {!! Html::script('Melody/js/alerts.js') !!}--}}
-{{--    {!! Html::script('Melody/js/avgrund.js') !!}--}}
 @endsection

@@ -67,7 +67,11 @@
                                             {{ $product->stock }}
                                         </td>
                                         <td>
-                                            {{ $product->status }}
+                                            @if($product->status == 'ACTIVE')
+                                                <a href="{{ route('products.change', $product) }}" class="btn btn-success btn-block pt-1 pb-1">ACTIVADO <i class="fa-solid fa-check"></i></a>
+                                            @else
+                                                <a href="{{ route('products.change', $product) }}" class="btn btn-danger btn-block pt-1 pb-1">DESACTIVADO <i class="fas fa-times"></i></a>
+                                            @endif
                                         </td>
                                         <td>
                                             {{ $product->category->name }}

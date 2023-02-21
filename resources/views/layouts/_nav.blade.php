@@ -17,7 +17,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link" href="{{ route('home') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -25,43 +25,44 @@
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('categories.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+{{--                <i class="fa fa-puzzle-piece menu-icon"></i>--}}
+                <i class="fa-solid fa-tags menu-icon"></i>
                 <span class="menu-title">Categorías</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('clients.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-users menu-icon"></i>
                 <span class="menu-title">Clientes</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('products.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-boxes-stacked menu-icon"></i>
                 <span class="menu-title">Productos</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('providers.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-truck-fast menu-icon"></i>
                 <span class="menu-title">Proveedores</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('purchases.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-cart-plus menu-icon"></i>
                 <span class="menu-title">Compras</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('sales.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-cart-shopping menu-icon"></i>
                 <span class="menu-title">Ventas</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
-                <i class="fab fa-trello menu-icon"></i>
+                <i class="fa-solid fa-chart-column menu-icon"></i>
                 <span class="menu-title">Reportes</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -74,19 +75,19 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('users.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-user-tag menu-icon"></i>
                 <span class="menu-title">Usuarios</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('roles.index') }}">
-                <i class="fa fa-puzzle-piece menu-icon"></i>
+                <i class="fa-solid fa-user-gear menu-icon"></i>
                 <span class="menu-title">Roles</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts2" aria-expanded="false" aria-controls="page-layouts">
-                <i class="fab fa-trello menu-icon"></i>
+                <i class="fa-solid fa-gears menu-icon"></i>
                 <span class="menu-title">Configuración</span>
                 <i class="menu-arrow"></i>
             </a>

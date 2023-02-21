@@ -26,13 +26,21 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/home', function () {
+    return view('admin.index');
+})->middleware(['auth'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,9 +50,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('sales/reports_day', [ReportController::class, 'reports_day'])->name('reports.day');
-Route::get('sales/reports_date', [ReportController::class, 'reports_date'])->name('reports.date');
-Route::post('sales/reports_results', [ReportController::class, 'reports_results'])->name('reports.results');
+Route::get('reports_day', [ReportController::class, 'reports_day'])->name('reports.day');
+Route::get('reports_date', [ReportController::class, 'reports_date'])->name('reports.date');
+Route::get('reports_results', [ReportController::class, 'reports_results'])->name('reports.results');
 
 Route::resource('categories', CategoryController::class)->names('categories');
 

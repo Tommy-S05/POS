@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="client_id">Proveedor</label>
+    <label for="client_id">Cliente</label>
     <br>
     <select class="form-group" name="client_id" id="client_id">
         <option value="" disabled selected>-- Elegir Cliente --</option>

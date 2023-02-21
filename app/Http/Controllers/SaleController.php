@@ -34,7 +34,7 @@ class SaleController extends Controller
     public function create()
     {
         $clients = Client::all();
-        $products = Product::all();
+        $products = Product::where('status', '=', 'ACTIVE')->get();
         return view('admin.sale.create', compact('clients', 'products'));
     }
     public function store(StoreSaleRequest $request)

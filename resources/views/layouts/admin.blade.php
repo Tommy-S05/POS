@@ -201,15 +201,22 @@
                         <img src="Melody/images/faces/face5.jpg" alt="profile"/>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                        <a class="dropdown-item">
+{{--                        <a class="dropdown-item">--}}
+{{--                            <i class="fas fa-cog text-primary"></i>--}}
+{{--                            Settings--}}
+{{--                        </a>--}}
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
                             <i class="fas fa-cog text-primary"></i>
-                            Settings
+                            {{ __('Profile') }}
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">
-                            <i class="fas fa-power-off text-primary"></i>
-                            Logout
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="fas fa-power-off text-primary"></i>
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
                     </div>
                 </li>
                 @yield('options')

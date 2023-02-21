@@ -79,7 +79,11 @@
                                             {{ number_format($purchase->total, 2) }}
                                         </td>
                                         <td>
-                                            {{ $purchase->status }}
+                                            @if($purchase->status == 'VALID')
+                                                <a href="{{ route('purchases.change', $purchase) }}" class="btn btn-success pt-1 pb-1">VALIDO <i class="fa-solid fa-check"></i></a>
+                                            @else
+                                                <a href="{{ route('purchases.change', $purchase) }}" class="btn btn-danger pt-1 pb-1">CANCELADO <i class="fas fa-times"></i></a>
+                                            @endif
                                         </td>
                                         <td style="width: 100px">
 {{--                                            <a class="jsgrid-button jsgrid-edit-button" href="{{ route('purchases.edit', $purchase) }}" title="Editar">--}}

@@ -31,6 +31,7 @@ class PurchaseController extends Controller
     public function create()
     {
         $providers = Provider::all();
+//        $products = Product::where('status', '=', 'ACTIVE')->get();
         $products = Product::all();
         return view('admin.purchase.create', compact('providers', 'products'));
     }

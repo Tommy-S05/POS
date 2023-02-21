@@ -98,11 +98,10 @@
 {{--                                    </p>--}}
                                 </div>
                                 @if($product->status == 'ACTIVE')
-                                    <a href="{{ route('products.change', $product) }}" class="btn btn-success btn-block">{{ $product->status }}</a>
+                                    <a href="{{ route('products.change', $product) }}" class="btn btn-success btn-block">ACTIVADO</a>
                                 @else
-                                    <a href="{{ route('products.change', $product) }}" class="btn btn-danger btn-block">{{ $product->status }}</a>
+                                    <a href="{{ route('products.change', $product) }}" class="btn btn-danger btn-block">DESACTIVADO</a>
                                 @endif
-
                             </div>
                             <div class="col-lg-8 pl-lg-5">
                                 <div class="d-flex justify-content-between">
