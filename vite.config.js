@@ -24,6 +24,7 @@ export default defineConfig({
                 'resources/Melody/js/alerts.js',
                 'resources/Melody/js/avgrund.js',
                 'resources/Melody/js/dropify.js',
+                'resources/Melody/js/chartist.js',
             ],
             refresh: true,
         }),

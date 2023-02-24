@@ -32,6 +32,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+{{--            <img style="width: 150px; height: 50px;" src="images/1676953447-wapiti_horizontal_positive.png" alt="Logo"/>--}}
             <a class="navbar-brand brand-logo" href="Melody/index-2.html"><img src="Melody/images/logo.svg" alt="logo"/></a>
             <a class="navbar-brand brand-logo-mini" href="Melody/index-2.html"><img src="Melody/images/logo-mini.svg" alt="logo"/></a>
         </div>

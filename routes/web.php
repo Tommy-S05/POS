@@ -13,6 +13,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -38,9 +39,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', function () {
-    return view('admin.index');
-})->middleware(['auth'])->name('home');
+//Route::get('/home', function () {
+//    return view('admin.index');
+//})->middleware(['auth'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

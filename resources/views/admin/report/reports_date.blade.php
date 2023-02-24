@@ -22,7 +22,7 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Panel de Administrador</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Panel de Administrador</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Reporte de Ventas</li>
                 </ol>
             </nav>
@@ -34,7 +34,7 @@
                         <div class="d-flex justify-content-between">
                         </div>
                         <form action="{{ route('reports.results') }}" method="GET">
-                            {{ csrf_field() }}
+{{--                            {{ csrf_field() }}--}}
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <span>Fecha Inicial</span>

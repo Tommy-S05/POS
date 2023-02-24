@@ -21,8 +21,8 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Panel de Administrador</a></li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('roles.index') }}">Usuarios</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Panel de Administrador</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('users.index') }}">Usuarios</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Editar Usuario</li>
                 </ol>
             </nav>

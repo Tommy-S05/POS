@@ -7,57 +7,24 @@
                 </div>
                 <div class="profile-name">
                     <p class="name">
-                        Welcome Jane
+                        {{ Auth::user()->name }}
                     </p>
                     <p class="designation">
-                        Super Admin
+                        {{ Auth::user()->getRoleNames()->first() }}
+{{--                        @php--}}
+{{--                            $roles = Auth::user()->getRoleNames();--}}
+{{--                        @endphp--}}
+{{--                        @foreach($roles as $role)--}}
+{{--                            {{ $role }}--}}
+{{--                        @endforeach--}}
                     </p>
                 </div>
             </div>
         </li>
-
         <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">
                 <i class="fa fa-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('categories.index') }}">
-{{--                <i class="fa fa-puzzle-piece menu-icon"></i>--}}
-                <i class="fa-solid fa-tags menu-icon"></i>
-                <span class="menu-title">Categorías</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('clients.index') }}">
-                <i class="fa-solid fa-users menu-icon"></i>
-                <span class="menu-title">Clientes</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('products.index') }}">
-                <i class="fa-solid fa-boxes-stacked menu-icon"></i>
-                <span class="menu-title">Productos</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('providers.index') }}">
-                <i class="fa-solid fa-truck-fast menu-icon"></i>
-                <span class="menu-title">Proveedores</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('purchases.index') }}">
-                <i class="fa-solid fa-cart-plus menu-icon"></i>
-                <span class="menu-title">Compras</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('sales.index') }}">
-                <i class="fa-solid fa-cart-shopping menu-icon"></i>
-                <span class="menu-title">Ventas</span>
             </a>
         </li>
         <li class="nav-item">
@@ -72,6 +39,43 @@
                     <li class="nav-item d-none d-lg-block"> <a class="nav-link" href="{{ route('reports.date') }}">Reportes por Fecha</a></li>
                 </ul>
             </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('purchases.index') }}">
+                <i class="fa-solid fa-cart-plus menu-icon"></i>
+                <span class="menu-title">Compras</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('sales.index') }}">
+                <i class="fa-solid fa-cart-shopping menu-icon"></i>
+                <span class="menu-title">Ventas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('categories.index') }}">
+{{--                <i class="fa fa-puzzle-piece menu-icon"></i>--}}
+                <i class="fa-solid fa-tags menu-icon"></i>
+                <span class="menu-title">Categorías</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('products.index') }}">
+                <i class="fa-solid fa-boxes-stacked menu-icon"></i>
+                <span class="menu-title">Productos</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('clients.index') }}">
+                <i class="fa-solid fa-users menu-icon"></i>
+                <span class="menu-title">Clientes</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('providers.index') }}">
+                <i class="fa-solid fa-truck-fast menu-icon"></i>
+                <span class="menu-title">Proveedores</span>
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('users.index') }}">
